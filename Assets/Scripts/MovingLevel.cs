@@ -3,8 +3,7 @@ using System.Collections;
 
 public class MovingLevel : MonoBehaviour {
 
-    [SerializeField]
-    private float Speed;
+    public Vector2 velocity;
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +12,10 @@ public class MovingLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position += new Vector3(Speed * Time.deltaTime, 0f);
+        transform.position += new Vector3(velocity.x * Time.deltaTime, velocity.y * Time.deltaTime);
 	}
 
-    void ChangeSpeed(float speed) {
-        Speed = speed;
+    void ChangeSpeed(Vector2 velocity) {
+        this.velocity = velocity;
     }
 }

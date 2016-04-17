@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class DamagePlayer : MonoBehaviour {
     [SerializeField]
@@ -8,6 +7,7 @@ public class DamagePlayer : MonoBehaviour {
     private bool isInstaKill;
     [SerializeField]
     private bool destroyOnHit;
+    
 
 	// Use this for initialization
 	void Start () {
