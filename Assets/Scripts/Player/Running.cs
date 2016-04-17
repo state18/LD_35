@@ -7,6 +7,15 @@ public class Running : MonoBehaviour {
     private float jumpMagnitude;
     [SerializeField]
     LayerMask ground;
+    [SerializeField]
+    private float maxCooldown;
+    private float cooldown;
+    [SerializeField]
+    Transform firePoint;
+    [SerializeField]
+    Projectile bullet;
+    [SerializeField]
+    private float bulletSpeed;
 
     float startingPositionX;
 
@@ -18,6 +27,7 @@ public class Running : MonoBehaviour {
     }
 
     void Update() {
+        cooldown -= Time.deltaTime;
         // Handle jumping (legal action if grounded)
         if (Input.GetButtonDown("Jump") && IsGrounded()) {
             Debug.Log("jumping");
@@ -26,6 +36,9 @@ public class Running : MonoBehaviour {
 
         // Correct horizontal position if needed.
         CorrectHorizontalPosition();
+
+        if (Input.GetButtonDown("Fire1") && cooldown <= 0)
+            Fire();
 
     }
 
@@ -55,7 +68,11 @@ public class Running : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = new Vector2(xSpeed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
-    void Attack () {
+    void Fire () {
+        cooldown = maxCooldown;
 
+        var projectile = (Projectile)Instantiate(bullet, firePoint.position, firePoint.rotation);
+        projectile.Initialize(new Vector2(bulletSpeed, 0f), 3f);
+        cooldown = maxCooldown;
     }
 } 

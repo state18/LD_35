@@ -13,7 +13,7 @@ public class MovingLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position -= new Vector3(Speed * Time.deltaTime, 0f);
+        transform.position += new Vector3(Speed * Time.deltaTime, 0f);
 	}
 
     void ChangeSpeed(float speed) {

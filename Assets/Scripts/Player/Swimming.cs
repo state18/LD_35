@@ -18,29 +18,30 @@ public class Swimming : MonoBehaviour {
 
     private float cooldownTimer;
 
-    void Update () {
-        cooldownTimer -= Time.deltaTime;
+    void Update() {
+        if (cooldownTimer > 0)
+            cooldownTimer -= Time.deltaTime;
 
         var horizontalDirection = Input.GetAxisRaw("Horizontal");
         GetComponent<Rigidbody2D>().velocity = new Vector2(horizontalDirection * horizontalMagnitude, GetComponent<Rigidbody2D>().velocity.y);
 
-        if (horizontalDirection != 0 && Mathf.Sign(horizontalDirection) != Mathf.Sign(transform.localScale.x)) 
+        if (horizontalDirection != 0 && Mathf.Sign(horizontalDirection) != Mathf.Sign(transform.localScale.x))
             Flip();
-        
+
 
         if (Input.GetButtonDown("Jump")) {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpMagnitude);
         }
 
         // Handle shooting
-        if (Input.GetButtonDown("Fire1") && cooldownTimer <= 0) 
+        if (Input.GetButtonDown("Fire1") && cooldownTimer <= 0)
             Fire();
-        
+
     }
 
     void Fire() {
         var projectile = (Projectile)Instantiate(bullet, firePoint.position, firePoint.rotation);
-        projectile.Initialize(new Vector2(projectileVelocity* Mathf.Sign(transform.localScale.x), 0f), 3f);
+        projectile.Initialize(new Vector2(projectileVelocity * Mathf.Sign(transform.localScale.x), 0f), 3f);
         cooldownTimer = maxCooldown;
     }
 
