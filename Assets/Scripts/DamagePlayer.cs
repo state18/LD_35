@@ -30,7 +30,12 @@ public class DamagePlayer : MonoBehaviour {
                 hm.TakeDamage(damageToGive);
 
             if (destroyOnHit)
-                Destroy(gameObject);
+                if (GetComponent<EnemyHealthManager>() != null) {
+                    GetComponent<EnemyHealthManager>().Kill();
+                } else {
+                    Destroy(gameObject);
+                }
+            
         }       
     }
 }

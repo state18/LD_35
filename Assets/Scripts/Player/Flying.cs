@@ -16,6 +16,8 @@ public class Flying : MonoBehaviour {
     private float bulletSpeed;
     [SerializeField]
     private float maxCooldown;
+    [SerializeField]
+    private float bulletLifetime;
     private float cooldown;
 
     void Update() {
@@ -35,7 +37,7 @@ public class Flying : MonoBehaviour {
         cooldown = maxCooldown;
 
         var projectile = (Projectile)Instantiate(bullet, firePoint.position, firePoint.rotation);
-        projectile.Initialize(new Vector2(0f,bulletSpeed), 3f);
+        projectile.Initialize(new Vector2(0f,bulletSpeed), bulletLifetime);
         cooldown = maxCooldown;
     }
 }
