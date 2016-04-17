@@ -6,9 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class HealthManager : MonoBehaviour {
 
-    // TODO UI
     // TODO make player invulernable for a bit after taking damage
-    // TODO add enemies of course
     [SerializeField]
     private int Health;
     [SerializeField]

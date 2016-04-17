@@ -3,9 +3,6 @@ using System.Collections;
 using System;
 
 public class Flying : MonoBehaviour {
-    // TODO make the flying area feel kind of like galaga.
-    // TODO add shooting to the land area.
-    // TODO limit the player's movement to the bottom section of the flying screen
     [SerializeField]
     private float verticalSpeed;
     [SerializeField]

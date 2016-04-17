@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EnemyHealthManager : MonoBehaviour {
 
-    // TODO UI
     [SerializeField]
     private int Health;
 
