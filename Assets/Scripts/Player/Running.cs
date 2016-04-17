@@ -16,6 +16,8 @@ public class Running : MonoBehaviour {
     Projectile bullet;
     [SerializeField]
     private float bulletSpeed;
+    [SerializeField]
+    private float bulletLifetime;
 
     float startingPositionX;
 
@@ -72,7 +74,7 @@ public class Running : MonoBehaviour {
         cooldown = maxCooldown;
 
         var projectile = (Projectile)Instantiate(bullet, firePoint.position, firePoint.rotation);
-        projectile.Initialize(new Vector2(bulletSpeed, 0f), 3f);
+        projectile.Initialize(new Vector2(bulletSpeed, 0f), bulletLifetime);
         cooldown = maxCooldown;
     }
 } 

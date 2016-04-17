@@ -20,9 +20,10 @@ public class DamagePlayer : MonoBehaviour {
 	}
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Player entered damage zone");
+        
         var hm = other.GetComponent<HealthManager>();
         if (hm != null) {
+            Debug.Log("Player entered damage zone");
             if (isInstaKill)
                 hm.Kill();
             else
