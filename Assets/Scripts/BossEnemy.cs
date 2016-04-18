@@ -78,7 +78,7 @@ public class BossEnemy : MonoBehaviour {
     }
 
     public void Spawn() {
-        if (transform.localScale.x >= 1) {
+        if (transform.localScale.x >= .5) {
             var spawn = (BossEnemy)Instantiate(bossPrefab, transform.position - Vector3.right, transform.rotation);
             spawn.Initialize(transform.localScale, -1, speed, maxHealth);
             spawn = (BossEnemy)Instantiate(bossPrefab, transform.position + Vector3.right, transform.rotation);

@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if (Input.GetButtonDown("Cancel")) {
+            SceneManager.LoadScene(0);
+        }
     }
     public void OnPlayerDeath() {
         StartCoroutine("OnPlayerDeathCo");
